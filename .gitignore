@@ -1,2 +1,14 @@
+# global
+.ipynb_checkpoints
+
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.log
+
+# semana 1
 w1/data
 w1/data
+w1/output
+w1/keys-cloud
