@@ -391,6 +391,12 @@ Setear variable de entorno para indicar credenciales de GCP (varia de acuerdo al
 export GOOGLE_CREDENTIALS='/home/joviedo/data-engineering-zoomcamp/w1/keys-cloud/gcp_credentials'
 ```
 
+or
+
+```bash
+export GOOGLE_CREDENTIALS='../keys-cloud/gcp_credentials'
+```
+
 Visualizar variable de entorno
 ```bash
 echo $GOOGLE_CREDENTIALS
