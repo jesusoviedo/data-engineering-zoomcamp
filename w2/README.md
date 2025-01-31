@@ -108,24 +108,33 @@ Si deseas profundizar más, consulta estos recursos:
 
 - *[Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main)*
 - *[TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)*
-- *[docker build](https://docs.docker.com/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/)* 
-- *[docker run](https://docs.docker.com/reference/cli/docker/container/run/)* 
-- *[docker network](https://docs.docker.com/reference/cli/docker/network/)*
-- *[pipenv](https://pipenv-es.readthedocs.io/es/latest/)*
-- *[pandas](https://pandas.pydata.org/)*
-- *[pgcli](https://www.pgcli.com/)*
-- *[postgres](https://hub.docker.com/_/postgres)* 
-- *[jupyter notebook](https://jupyter.org/install)*
-- *[pgadmin](https://www.pgadmin.org/docs/pgadmin4/development/container_deployment.html)* 
-- *[comandos linux](https://www.dreamhost.com/blog/es/comandos-linux-que-debes-conocer/)* 
-- *[sql join](https://www.postgresql.org/docs/current/tutorial-join.html)*
-- *[sql group by](https://www.postgresql.org/docs/current/tutorial-agg.html)*
-- *[terraform](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/infrastructure-as-code)*
-- *[terraform install ](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli)*
-- *[terraform providers](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build)*
-- *[terraform apply](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-change)*
-- *[terraform destroy](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-destroy)*
-- *[terraform variables](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-variables)*
-- *[terraform output values](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-outputs)*
-- *[provider google](https://registry.terraform.io/providers/hashicorp/google/6.14.1/docs/guides/provider_reference)*
- 
+- *[kestra docs](https://kestra.io/docs)*
+- *[docker install](https://kestra.io/docs/installation/docker)*
+- *[docker-compose install](https://kestra.io/docs/installation/docker-compose)*
+- *[kestra quickstart](https://kestra.io/docs/getting-started/quickstart)*
+- *[kestra tutorial](https://kestra.io/docs/getting-started/tutorial)*
+- *[kestra concepts](https://kestra.io/docs/concepts)*
+- *[kestra fundamentals](https://kestra.io/docs/tutorial/fundamentals)*
+- *[kestra scripts](https://kestra.io/docs/workflow-components/tasks/scripts)*
+- *[kestra inputs](https://kestra.io/docs/tutorial/inputs)*
+- *[kestra workflow-components inputs](https://kestra.io/docs/workflow-components/inputs)*
+- *[kestra outputs](https://kestra.io/docs/tutorial/outputs)*
+- *[kestra workflow-components outputs](https://kestra.io/docs/workflow-components/outputs)*
+- *[kestra triggers](https://kestra.io/docs/tutorial/triggers)*
+- *[kestra workflow-components triggers](https://kestra.io/docs/workflow-components/triggers)*
+- *[kestra flowable](https://kestra.io/docs/tutorial/flowable)*
+- *[kestra flowable-tasks](https://kestra.io/docs/workflow-components/tasks/flowable-tasks)*
+- *[kestra secret](https://kestra.io/docs/concepts/secret)*
+- *[kestra how-to-guides secret](https://kestra.io/docs/how-to-guides/secrets)*
+- *[kestra errors](https://kestra.io/docs/tutorial/errors)*
+- *[kestra workflow-components errors](https://kestra.io/docs/workflow-components/errors)*
+
+
+
+
+
+
+
+
+
+
