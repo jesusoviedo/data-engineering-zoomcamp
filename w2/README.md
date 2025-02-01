@@ -115,7 +115,6 @@ Si deseas profundizar más, consulta estos recursos:
 - *[kestra tutorial](https://kestra.io/docs/getting-started/tutorial)*
 - *[kestra concepts](https://kestra.io/docs/concepts)*
 - *[kestra fundamentals](https://kestra.io/docs/tutorial/fundamentals)*
-- *[kestra scripts](https://kestra.io/docs/workflow-components/tasks/scripts)*
 - *[kestra inputs](https://kestra.io/docs/tutorial/inputs)*
 - *[kestra workflow-components inputs](https://kestra.io/docs/workflow-components/inputs)*
 - *[kestra outputs](https://kestra.io/docs/tutorial/outputs)*
@@ -128,7 +127,8 @@ Si deseas profundizar más, consulta estos recursos:
 - *[kestra how-to-guides secret](https://kestra.io/docs/how-to-guides/secrets)*
 - *[kestra errors](https://kestra.io/docs/tutorial/errors)*
 - *[kestra workflow-components errors](https://kestra.io/docs/workflow-components/errors)*
-
+- *[kestra docker](https://kestra.io/docs/tutorial/docker)*
+- *[kestra scripts](https://kestra.io/docs/workflow-components/tasks/scripts)*
 
 
 
