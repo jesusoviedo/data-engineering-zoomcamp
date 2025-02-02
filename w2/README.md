@@ -1,4 +1,4 @@
-## Semana 1
+## Semana 2
 
 ### 1. Comandos básicos
 
@@ -107,14 +107,20 @@ Carpeta para guardar los flows de Kestra
 mkdir flows
 ```
 
+
 **Flows en kestra para practicar**
 
 1. *[getting_started_data_pipeline](/w2/flows/getting_started_data_pipeline.yaml)*
 2. *[postgres_taxi](/w2/flows/postgres_taxi.yaml)*
 3. *[postgres_taxi_scheduled](/w2/flows/postgres_taxi_scheduled.yaml)*
-4. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+4. *[postgres_dbt](/w2/flows/postgres_dbt.yaml)*
 5. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
 6. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+7. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+8. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+9. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+
+
 
 ###  Fuentes y Documentación
 
