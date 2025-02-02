@@ -74,6 +74,15 @@ curl -o docker-compose.yml \
 https://raw.githubusercontent.com/kestra-io/kestra/develop/docker-compose.yml
 ```
 
+Fix: Agregar extra_hosts para host.docker.internal en Linux
+
+Se ha corregido la configuración de Docker Compose para solucionar el error de resolución del alias `host.docker.internal` en entornos Linux. Dado que este alias no se resuelve de forma nativa en Linux, se agregó la siguiente línea en el contenedor correspondiente:
+
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+
+Con este cambio, los contenedores que necesiten acceder a servicios en el host mediante `host.docker.internal` podrán hacerlo correctamente. Si se ejecutan conexiones entre contenedores en la misma red, se recomienda utilizar el nombre del servicio directamente.
+
 ```bash
 docker-compose up -d
 ```
@@ -98,11 +107,16 @@ Carpeta para guardar los flows de Kestra
 mkdir flows
 ```
 
+**Flows en kestra para practicar**
 
+1. *[getting_started_data_pipeline](/w2/flows/getting_started_data_pipeline.yaml)*
+2. *[postgres_taxi](/w2/flows/postgres_taxi.yaml)*
+3. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+4. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+5. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+6. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
 
-
-
-####  Fuentes y Documentación
+###  Fuentes y Documentación
 
 Si deseas profundizar más, consulta estos recursos:
 
