@@ -17,5 +17,8 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=w2dataengi
     ports:
       - 8082:80
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
 volumes:
   postgres-data:
+  pgadmin-data:
