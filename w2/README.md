@@ -111,7 +111,7 @@ mkdir flows
 
 1. *[getting_started_data_pipeline](/w2/flows/getting_started_data_pipeline.yaml)*
 2. *[postgres_taxi](/w2/flows/postgres_taxi.yaml)*
-3. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+3. *[postgres_taxi_scheduled](/w2/flows/postgres_taxi_scheduled.yaml)*
 4. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
 5. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
 6. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
