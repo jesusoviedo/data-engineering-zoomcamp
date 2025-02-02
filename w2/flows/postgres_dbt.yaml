@@ -1,0 +1,76 @@
+id: postgres_dbt
+namespace: zoomcamp.jesusoviedo
+
+
+labels:
+  autor: "joviedo"
+  proyecto: "data-engineering-zoomcamp"
+
+
+inputs:
+  - id: dbt_command
+    type: SELECT
+    allowCustomValue: true
+    defaults: dbt build
+    values:
+      - dbt build
+      - dbt debug # use when running the first time to validate DB connection
+
+
+variables:
+  uri_repo: "https://github.com/DataTalksClub/data-engineering-zoomcamp"
+  branch_repo: "main"
+  directorio_repo: "04-analytics-engineering/taxi_rides_ny"
+
+tasks:
+
+  - id: sync
+    type: io.kestra.plugin.git.SyncNamespaceFiles
+    url: "{{vars.uri_repo}}"
+    branch: "{{vars.branch_repo}}"
+    namespace: "{{ flow.namespace }}"
+    gitDirectory: "{{ vars.directorio_repo }}"
+    dryRun: false
+    # disabled: true # this Git Sync is needed only when running it the first time, afterwards the task can be disabled
+
+  - id: dbt-build
+    type: io.kestra.plugin.dbt.cli.DbtCLI
+    env:
+      DBT_DATABASE: "{{kv('db_postgres')}}"
+      DBT_SCHEMA: public
+    namespaceFiles:
+      enabled: true
+    containerImage: ghcr.io/kestra-io/dbt-postgres:latest
+    taskRunner:
+      type: io.kestra.plugin.scripts.runner.docker.Docker
+      extraHosts:
+          - "host.docker.internal:host-gateway"
+    commands:
+      - dbt deps
+      - "{{ inputs.dbt_command }}"
+    storeManifest:
+      key: manifest.json
+      namespace: "{{ flow.namespace }}"
+    profiles: |
+      default:
+        outputs:
+          dev:
+            type: postgres
+            host: host.docker.internal
+            user: "{{kv('user_postgres')}}"
+            password: "{{kv('password_postgres')}}"
+            port: {{kv('port_postgres')}}
+            dbname: "{{kv('db_postgres')}}"
+            schema: public
+            threads: 8
+            connect_timeout: 10
+            priority: interactive
+        target: dev
+description: |
+  Note that you need to adjust the models/staging/schema.yml file to match your database and schema. Select and edit that Namespace File from the UI. Save and run this flow. Once https://github.com/DataTalksClub/data-engineering-zoomcamp/pull/565/files is merged, you can ignore this note as it will be dynamically adjusted based on env variables.
+  ```yaml
+  sources:
+    - name: staging
+      database: "{{kv('db_postgres')}}"
+      schema: public
+  ```

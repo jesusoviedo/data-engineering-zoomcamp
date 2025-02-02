@@ -5,6 +5,11 @@ description: |
   CSV data used here comes from: https://github.com/DataTalksClub/nyc-tlc-data/releases
 
 
+labels:
+  autor: "joviedo"
+  proyecto: "data-engineering-zoomcamp"
+
+
 concurrency:
   limit: 1
 
