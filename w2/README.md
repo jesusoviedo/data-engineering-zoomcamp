@@ -107,6 +107,42 @@ Carpeta para guardar los flows de Kestra
 mkdir flows
 ```
 
+**API Kestra**
+
+En Kestra, además de ejecutar flujos de trabajo de forma manual o mediante programación interna, también es posible dispararlos utilizando su API. Esto resulta especialmente útil para integraciones con otros sistemas o para automatizar procesos desde scripts externos.
+
+Por ejemplo, el siguiente comando curl envía una solicitud POST para ejecutar un flujo llamado gcp_setup perteneciente al proyecto zoomcamp.jesusoviedo. En este caso, se utiliza el parámetro labels para añadir una etiqueta que, en este ejemplo, identifica la ejecución como correspondiente a la "semana 2":
+
+
+*Request*
+```bash
+curl -v -X POST -H 'Content-Type: multipart/form-data' 'http://localhost:8080/api/v1/executions/zoomcamp.jesusoviedo/gcp_setup?labels=week_2:true'
+```
+
+*Response*
+```bash
+* Host localhost:8080 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:8080...
+* Connected to localhost (::1) port 8080
+> POST /api/v1/executions/zoomcamp.jesusoviedo/gcp_setup?labels=week_2:true HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/8.5.0
+> Accept: */*
+> Content-Type: multipart/form-data
+> 
+< HTTP/1.1 200 OK
+< date: Mon, 3 Feb 2025 13:37:13 GMT
+< content-type: application/json
+< content-length: 716
+< 
+* Connection #0 to host localhost left intact
+{"id":"1B9QxyUySVXxOFQhjbBuwZ","namespace":"zoomcamp.jesusoviedo","flowId":"gcp_setup","flowRevision":1,"labels":[{"key":"autor","value":"joviedo"},{"key":"proyecto","value":"data-engineering-zoomcamp"},{"key":"week_2","value":"true"},{"key":"system.correlationId","value":"1B9QxyUySVXxOFQhjbBuwZ"}],"state":{"current":"CREATED","histories":[{"state":"CREATED","date":"2025-02-03T13:37:13.063468651Z"}],"startDate":"2025-02-03T13:37:13.063468651Z","duration":"PT0.007194986S"},"originalId":"1B9QxyUySVXxOFQhjbBuwZ","deleted":false,"metadata":{"attemptNumber":1,"originalCreatedDate":"2025-02-03T13:37:13.063474921Z"},"url":"http://localhost:8080//ui/executions/zoomcamp.jesusoviedo/gcp_setup/1B9QxyUySVXxOFQhjbBuwZ"}
+```
+
+Con este comando, se demuestra la flexibilidad de Kestra para iniciar flujos de trabajo a través de su API, facilitando la integración y ejecución automatizada en entornos que requieren interacción remota.
+
 ## 4. Flows en kestra
 
 
