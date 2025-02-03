@@ -1,6 +1,6 @@
-## Semana 2
+# Semana 2
 
-### 1. Comandos básicos
+## 1. Comandos básicos
 
 Descargar archivo
 
@@ -45,7 +45,7 @@ mv <nombre_archivo_actual> <nombre_archivo_nuevo>
 ```
 
 
-### 2. Entornos de desarrollo
+## 2. Entornos de desarrollo
 
 Crear entorno e instalar dependencias
 
@@ -65,7 +65,7 @@ pipenv install --dev pgcli
 pipenv install --dev notebook
 ```
 
-### 3. Kestra
+## 3. Kestra
 
 Se descarga la versión oficial del docker compose para iniciar kestra localmente
 
@@ -107,18 +107,52 @@ Carpeta para guardar los flows de Kestra
 mkdir flows
 ```
 
+## 4. Flows en kestra
 
-**Flows en kestra para practicar**
+
+### **Diseño de flujos de trabajo con recursos locales**
+
+Creación de flujos de trabajo que operan exclusivamente con recursos locales. Se abordan soluciones que van desde procesos sencillos hasta implementaciones complejas, integrando triggers y la ejecución de DBT para optimizar la automatización y la eficiencia.
 
 1. *[getting_started_data_pipeline](/w2/flows/getting_started_data_pipeline.yaml)*
 2. *[postgres_taxi](/w2/flows/postgres_taxi.yaml)*
 3. *[postgres_taxi_scheduled](/w2/flows/postgres_taxi_scheduled.yaml)*
 4. *[postgres_dbt](/w2/flows/postgres_dbt.yaml)*
+
+### **Diseño de Flujos de Trabajo en Google Cloud Platform**
+
+Para interactuar con Google Cloud Platform (GCP) desde Kestra y poder crear un bucket en Cloud Storage y un dataset en BigQuery, es necesario configurar una cuenta de servicio con los permisos adecuados.
+
+**Pasos para configurar la cuenta de servicio en GCP:**
+1. Crear una cuenta de servicio
+- Ve a la consola de GCP: Google Cloud Console
+- Navega a IAM y administración → Cuentas de servicio
+- Crea una nueva cuenta de servicio y asígnale un nombre relevante.
+
+2. Asignar permisos
+- Otorga los siguientes roles a la cuenta de servicio:
+- Storage Admin → Para crear y administrar buckets en Cloud Storage.
+- BigQuery Admin → Para crear y administrar datasets en BigQuery.
+
+3. Generar y descargar la clave JSON
+- Una vez creada la cuenta de servicio, ve a la pestaña Claves.
+- Haz clic en Agregar clave → Crear una clave nueva.
+- Selecciona el formato JSON y descárgalo.
+ Guarda este archivo en un lugar seguro, ya que contiene credenciales sensibles.
+
+4. Agregar las credenciales a Kestra
+- Ve a Kestra UI → Secrets (KV Store).
+- Agrega un nuevo secreto con:
+  - Key: GCP_CREDS
+  - Value: Contenido del archivo JSON descargado.
+
+Con esta configuración, podrás utilizar GCP_CREDS en tus flujos de Kestra para autenticarte en GCP y ejecutar tareas relacionadas con Cloud Storage y BigQuery:
+
+1. *[gcp_kv](/w2/flows/gcp_kv.yaml)*
+2. *[gcp_setup.yaml](/w2/flows/gcp_setup.yaml)*
+3. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+4. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
 5. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
-6. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
-7. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
-8. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
-9. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
 
 
 
