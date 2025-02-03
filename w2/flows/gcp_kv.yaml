@@ -1,0 +1,35 @@
+id: gcp_kv
+namespace: zoomcamp.jesusoviedo
+
+labels:
+  autor: "joviedo"
+  proyecto: "data-engineering-zoomcamp"
+
+tasks:
+  - id: gcp_project_id
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_PROJECT_ID
+    kvType: STRING
+    value: "data-enginnering-rj92"
+    ttl: P7D
+
+  - id: gcp_location
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_LOCATION
+    kvType: STRING
+    value: "us-central1"
+    ttl: P7D
+
+  - id: gcp_bucket_name
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_BUCKET_NAME
+    kvType: STRING
+    value: "data-enginnering-rj92-kestra-bucket"
+    ttl: P7D
+
+  - id: gcp_dataset
+    type: io.kestra.plugin.core.kv.Set
+    key: GCP_DATASET
+    kvType: STRING
+    value: "week-2-kestra-dataset"
+    ttl: P7D
