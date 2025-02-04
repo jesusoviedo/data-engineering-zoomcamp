@@ -28,7 +28,7 @@ pipenv shell
 ```
 
 ```bash
-jupyter notebook
+jupyter notebook &
 ```
 
 ### 3. PostgreSQL + PgAdmin
