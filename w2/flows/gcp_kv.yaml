@@ -17,7 +17,7 @@ tasks:
     type: io.kestra.plugin.core.kv.Set
     key: GCP_LOCATION
     kvType: STRING
-    value: "us-central1"
+    value: "southamerica-east1"
     ttl: P7D
 
   - id: gcp_bucket_name
@@ -31,5 +31,5 @@ tasks:
     type: io.kestra.plugin.core.kv.Set
     key: GCP_DATASET
     kvType: STRING
-    value: "week-2-kestra-dataset"
+    value: "week_2_kestra_dataset"
     ttl: P7D
