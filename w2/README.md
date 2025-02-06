@@ -185,8 +185,8 @@ Para interactuar con Google Cloud Platform (GCP) desde Kestra y poder crear un b
 Con esta configuración, podrás utilizar GCP_CREDS en tus flujos de Kestra para autenticarte en GCP y ejecutar tareas relacionadas con Cloud Storage y BigQuery:
 
 1. *[gcp_kv](/w2/flows/gcp_kv.yaml)*
-2. *[gcp_setup.yaml](/w2/flows/gcp_setup.yaml)*
-3. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
+2. *[gcp_setup](/w2/flows/gcp_setup.yaml)*
+3. *[gcp_taxi](/w2/flows/gcp_taxi.yaml)*
 4. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
 5. *[.yaml](/w2/flows/getting_started_data_pipeline.yaml)*
 
