@@ -14,7 +14,7 @@
 
 📝 *[Tarea: Docker y Terraform](/hw1/)* – Resuelve desafíos prácticos y lleva tus habilidades al siguiente nivel.
 
-#### 🔗 **Explora Más en LinkedIn**
+#### 🔗 **Explora más en LinkedIn**
 
 Potencia tu aprendizaje explorando mis artículos en LinkedIn. 
 
@@ -40,9 +40,9 @@ Potencia tu aprendizaje explorando mis artículos en LinkedIn.
 
 📦 *[Kestra](/w2/)* – Explora el uso de Kestra para coordinar tus tareas y optimizar procesos. 
 
-📝 *[Kestra: Docker y Terraform](/hw2/)* – Resuelve desafíos prácticos y lleva tus habilidades al siguiente nivel.  
+📝 *[Tarea: Kestra](/hw2/)* – Resuelve desafíos prácticos y lleva tus habilidades al siguiente nivel.  
 
-#### 🔗 **Explora Más en LinkedIn**
+#### 🔗 **Explora más en LinkedIn**
 
 Potencia tu aprendizaje explorando mis artículos en LinkedIn. 
 
@@ -59,6 +59,32 @@ Potencia tu aprendizaje explorando mis artículos en LinkedIn.
 - 📌[Usando Docker para Taskrunners Aislados en Flows de Kestra y el Poder de Jinja](https://rb.gy/fl22dn)
 
 ¡Haz clic en los enlaces para leer más y unirte a la discusión!
+
+---
+
+🔹 **Módulo 3: Data Warehouse and BigQuery**  
+
+📦 *[Data Warehouse and BigQuery](/w3/)* – Sumérgete en el mundo de los almacenes de datos y aprende a aprovechar BigQuery para el almacenamiento y análisis eficiente de datos.
+
+📝 *[Tarea: Data Warehouse and BigQuery](/hw3/)* – Resuelve desafíos prácticos y lleva tus habilidades al siguiente nivel.  
+
+#### 🔗 **Explora más en Medium**
+
+Potencia tu aprendizaje explorando mis artículos en Medium. 
+
+- 📌[De OLTP a OLAP: La evolución hacia HTAP, Data Lakes y Data Lakehouses](https://shorturl.at/aXKWD)
+
+- 📌[Más Allá de los Terabytes: Cómo BigQuery Revoluciona el Mundo del Big Data](https://shorturl.at/l29ao)
+
+- 📌[El ABC de BigQuery: cómo crear tablas, usar datasets públicos y crear gráficos](https://shorturl.at/rfZCR) 
+
+- 📌[Cómo sacar provecho de las Particiones en BigQuery](https://shorturl.at/qFRjZ)
+
+- 📌[Clustering en BigQuery: organiza tus datos para consultas más rápidas](https://shorturl.at/8CpsL)
+
+¡Haz clic en los enlaces para leer más y unirte a la discusión!
+
+
 
 ---
 
