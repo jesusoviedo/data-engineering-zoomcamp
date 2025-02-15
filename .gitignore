@@ -17,3 +17,6 @@ hw1/data
 
 hw3/credentials
 hw3/data
+
+*.duckdb
+*.duckdb.wal
