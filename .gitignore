@@ -20,3 +20,5 @@ hw3/data
 
 *.duckdb
 *.duckdb.wal
+
+secrets.toml
