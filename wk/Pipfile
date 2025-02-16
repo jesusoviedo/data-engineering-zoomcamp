@@ -8,7 +8,7 @@ pandas = "*"
 polars = "*"
 pyarrow = "*"
 duckdb = "*"
-dlt = {extras = ["filesystem"], version = "*"}
+dlt = {extras = ["bigquery"], version = "*"}
 
 [dev-packages]
 notebook = "*"
