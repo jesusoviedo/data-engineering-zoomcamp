@@ -238,8 +238,7 @@ Si deseas profundizar más, consulta estos recursos:
 
 - *[Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main)*
 - *[TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)*
-- *[DLT - Data ingestion workshop](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/cohorts/2025/workshops/dlt/data_ingestion_workshop.md)
-
+- [DLT - Data ingestion workshop](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/cohorts/2025/workshops/dlt/data_ingestion_workshop.md)
 - *[DuckDB - Python API](https://duckdb.org/docs/clients/python/overview.html)*
 - *[DuckDB - Documentación](https://duckdb.org/docs/index)*
 - *[DuckDB - GitHub](https://github.com/duckdb/duckdb)*
@@ -252,7 +251,6 @@ Si deseas profundizar más, consulta estos recursos:
 - *[DLT - Destination bigquery](https://dlthub.com/docs/dlt-ecosystem/destinations/bigquery)*
 - *[DLT - Destination filesystem](https://dlthub.com/docs/dlt-ecosystem/destinations/filesystem)*
 - *[DLT - Using dlt](https://dlthub.com/docs/general-usage/)*
-*
 
 
 
