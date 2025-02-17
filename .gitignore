@@ -22,3 +22,4 @@ hw3/data
 *.duckdb.wal
 
 secrets.toml
+gcp_credentials.json
