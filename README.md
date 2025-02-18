@@ -87,8 +87,38 @@ Potencia tu aprendizaje explorando mis artículos en Medium.
 ¡Haz clic en los enlaces para leer más y unirte a la discusión!
 
 
+---
+
+🔹 **Workshop: Data Ingestion From APIs to Warehouses and Data Lakes**  
+
+📦 *[Data Ingestion From APIs to Warehouses and Data Lakes](/wk/)* – Aprende a ingerir datos desde APIs hacia Bigquery y GCS (Google Cloud Storage).
+
+📝 *[Tarea: Data Ingestion From APIs to Warehouses and Data Lakes](/hwk/)* – Resuelve desafíos prácticos y lleva tus habilidades al siguiente nivel.  
+
+#### 🔗 **Explora más en LinkedIn/Medium**
+
+Potencia tu aprendizaje explorando mis artículos en LinkedIn ó Medium. 
+
+- 📌[Workshop: Data Ingestion From APIs to Warehouses and Data Lakes con dlt (Parte 1)](https://www.linkedin.com/pulse/workshop-data-ingestion-from-apis-warehouses-lakes-1-oviedo-riquelme-qxdbf/?trackingId=wB6b9%2F6HyHk4SbvPHGvYMg%3D%3D)
+
+- 📌[Workshop: Data Ingestion From APIs to Warehouses and Data Lakes con dlt (Parte 2)](https://www.linkedin.com/pulse/workshop-data-ingestion-from-apis-warehouses-lakes-2-oviedo-riquelme-g2pxf/?trackingId=bz02Qp3xxeYMZzwBfgrb1g%3D%3D)
+
+- 📌[DuckDB: la Base de Datos Analítica ligera y poderosa](https://medium.com/@j92riquelme/duckdb-la-base-de-datos-anal%C3%ADtica-ligera-y-poderosa-8c46259a653e) 
+
+- 📌[DLT: la revolución en la carga de datos para Data Engineers](https://medium.com/@j92riquelme/dlt-la-revoluci%C3%B3n-en-la-carga-de-datos-para-data-engineers-6dce265b438d)
+
+- 📌[Cómo cargar datos en BigQuery con DLT: Guía práctica para Data Engineers](https://medium.com/@j92riquelme/c%C3%B3mo-cargar-datos-en-bigquery-con-dlt-gu%C3%ADa-pr%C3%A1ctica-para-data-engineers-5b98720ffa4e)
+
+- 📌[Construyendo un Data Lake en GCP con DLT: carga de datos a un bucket](https://medium.com/@j92riquelme/construyendo-un-data-lake-en-gcp-con-dlt-carga-de-datos-a-un-bucket-d37ab618c06c)
+
+¡Haz clic en los enlaces para leer más y unirte a la discusión!
+
+
 
 ---
+
+
+
 
 ✅ **Más contenido próximamente...** ¡Sigue explorando y aprendiendo! 🚀  
 
