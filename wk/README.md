@@ -203,17 +203,17 @@ pipenv run python ./script/dlt_2.py
 
 **Ejemplo usando API de Rick and Morty + BigQuery**
 
-Paso 1: necesitamos una cuenta de servicio con permisos de escritura en BigQuery
+Paso 1: necesitamos una cuenta de servicio con permisos de `BigQuery Data Editor`, `BigQuery Job User` y `BigQuery Read Session User`
 
 Paso 2: descargar el archivo .json
 
-Paso 3: crear archivo secrets.toml:
+Paso 3: crear archivo secrets:
 
 ```bash
 touch secrets.toml
 ```
 
-Paso 4: copiar el project_id, client_id y client_secret del archivo .json
+Paso 4: copiar el `project_id`, `client_id` y `client_secret` del archivo .json
 ```bash
 [destination.bigquery]
 location = "US"
@@ -232,6 +232,51 @@ pipenv run python script/dlt_3.py
 
 *Observación: no debes guardar el contenido del archivo secrets.toml en GitHub*
 
+**Ejemplo usando API de trip data + Bucket GCP**
+
+Paso 1: necesitamos una cuenta de servicio con permisos de `Storage Admin` y `Storage Object Creator`
+
+Paso 2: descargar el archivo .json
+
+Paso 3: definir variable de entorno que Google Cloud SDK y bibliotecas buscan por defecto 
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="ruta/al/archivo/credenciales.json"
+```
+
+*Para que la variable persista entre sesiones, agrega la línea anterior a tu archivo de configuración de shell (por ejemplo, .bashrc, .zshrc o .bash_profile)*
+
+Paso 4: crear archivo secrets:
+
+```bash
+touch secrets.toml
+```
+
+Paso 5: copiar el `project_id`, `client_id` y `client_secret` del archivo .json
+```bash
+[destination.bigquery]
+location = "US"
+
+[destination.bigquery.credentials]
+project_id ="project_id"  
+client_id = "client_id" 
+client_secret = "client_secret"  
+```
+
+Paso 5: ejecutar el script (se debe pasar el nombre del bucket, tipo de taxy, año, mes inicio y mes fin y como argumenteso):
+
+```bash
+python script/dlt_4.py \
+-bk data_enginnering_rj92_wk_2025 \
+-t green \
+-y 2024 \
+-i 1 \
+-f 7
+```
+
+*Observación: no debes guardar el contenido del archivo secrets.toml en GitHub*
+
+
 ###  Fuentes y Documentación
 
 Si deseas profundizar más, consulta estos recursos:
@@ -243,8 +288,8 @@ Si deseas profundizar más, consulta estos recursos:
 - *[DuckDB - Documentación](https://duckdb.org/docs/index)*
 - *[DuckDB - GitHub](https://github.com/duckdb/duckdb)*
 - *[DLT - GitHub](https://github.com/dlt-hub/dlt)*
-- *[DLT - GitHub](https://dlthub.com/docs/intro)*
-- *[DLT - GitHub](https://dlthub.com/docs/reference/explainers/how-dlt-works)*
+- *[DLT - Getting started](https://dlthub.com/docs/intro)*
+- *[DLT - How dlt works](https://dlthub.com/docs/reference/explainers/how-dlt-works)*
 - *[DLT - Core concepts](https://dlthub.com/docs/dlt-ecosystem/verified-sources/)*
 - *[DLT - Destinations](https://dlthub.com/docs/dlt-ecosystem/destinations/)*
 - *[DLT - Destination duckdb](https://dlthub.com/docs/dlt-ecosystem/destinations/duckdb)*
