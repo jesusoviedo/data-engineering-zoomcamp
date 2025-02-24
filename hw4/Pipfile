@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+google-cloud-bigquery-storage = "*"
+dask = "*"
+tqdm = "*"
+
+[dev-packages]
+notebook = "*"
+pandas = "*"
+dlt = {extras = ["bigquery"], version = "*"}
+
+[requires]
+python_version = "3.12"
+python_full_version = "3.12.3"
