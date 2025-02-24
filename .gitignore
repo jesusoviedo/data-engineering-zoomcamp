@@ -27,3 +27,4 @@ gcp_credentials.json
 dbt.log
 
 hw4/credentials
+hw4/logs
