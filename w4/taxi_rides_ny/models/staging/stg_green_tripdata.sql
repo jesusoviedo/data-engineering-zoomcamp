@@ -7,14 +7,11 @@
 with tripdata as 
 (
   select *,
-    row_number() over(partition by vendorid, lpep_pickup_datetime) as rn
+    row_number() over(partition by vendor_id, lpep_pickup_datetime) as rn
   from {{ source('staging','green_tripdata') }}
-  where vendorid is not null 
+  where vendor_id is not null 
 )
 select
-
- extra, mta_tax, tip_amount, tolls_amount, ehail_fee, improvement_surcharge, total_amount, payment_type, trip_type, congestion_surcharge
-
     -- identifiers
     {{ dbt_utils.generate_surrogate_key(['vendor_id', 'lpep_pickup_datetime']) }} as tripid,
     {{ dbt.safe_cast("vendor_id", api.Column.translate_type("integer")) }} as vendorid,
