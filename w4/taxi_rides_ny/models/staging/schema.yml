@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: staging
+    database: "{{ env_var('DBT_DATABASE', 'data-enginnering-rj92') }}"
+    schema: "{{ env_var('DBT_SCHEMA', 'trip_data_nyc') }}"
+    tables:
+      - name: green_tripdata
+      - name: yellow_tripdata
