@@ -67,7 +67,7 @@ def load_data_dlt(bucket_name, type_taxi, year, list_month):
             pipeline_name='pipeline_filesystem',
             destination='filesystem',
             dataset_name='filesystem_dataset',
-            dev_mode=True
+            dev_mode= False
         )
 
         load_info = pipeline.run(

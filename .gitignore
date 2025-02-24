@@ -23,3 +23,7 @@ hw3/data
 
 secrets.toml
 gcp_credentials.json
+
+dbt.log
+
+hw4/credentials
