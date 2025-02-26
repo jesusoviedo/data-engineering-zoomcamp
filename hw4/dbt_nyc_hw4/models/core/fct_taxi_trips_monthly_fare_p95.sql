@@ -35,3 +35,4 @@ SELECT
     FORMAT("%.2f",ROUND(p97_fare_amount, 1)) AS p97_fare_amount
 FROM tripdata_percentile
 ORDER BY year, month, service_type
+-- dbt build --select <model_name> --vars '{ 'year_start': 2019, 'year_end': 2020 }'

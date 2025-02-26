@@ -27,11 +27,7 @@ tripdata_revenue_quarter_growth AS (
     SELECT
         service_type,
         year_quarter,
-        --current_revenue,
-        --previous_revenue,
-        --diff_current_previous_revenue
         ROUND({{dbt_utils.safe_divide('diff_current_previous_revenue' , 'previous_revenue')}}, 2) as growth
-        --ROUND((current_revenue - previous_revenue) * 100 / NULLIF(previous_revenue, 0), 2) AS growth
     FROM tripdata_revenue_quarter
 )
 SELECT 
@@ -40,3 +36,4 @@ SELECT
     CONCAT( FORMAT("%.2f", COALESCE(growth, 0)) , '%') AS growth
 FROM tripdata_revenue_quarter_growth
 ORDER BY service_type, year_quarter
+-- dbt build --select <model_name> --vars '{ 'year_start': 2019, 'year_end': 2020 }'
