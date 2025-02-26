@@ -15,9 +15,9 @@ RESET = "\033[0m"
 
 YEAR = datetime.now().year
 TYPE_TAXY = ('green', 'yellow', 'fhv')
-DICT_TABLE_NAME = {'green': 'green_tripdata', 'yellow': 'yellow_tripdata_test', 'fhv': 'fhv_data'}
+DICT_TABLE_NAME = {'green': 'green_tripdata', 'yellow': 'yellow_tripdata', 'fhv': 'fhv_data'}
 TYPE_TABLE_ORIGIN_PARQUET = ()
-TYPE_TABLE_ORIGIN_CSV_GZ = ('fhv_data', 'green_tripdata', 'yellow_tripdata_test')
+TYPE_TABLE_ORIGIN_CSV_GZ = ('fhv_data', 'green_tripdata', 'yellow_tripdata')
 BASE_URL = ("https://d37ci6vzurychx.cloudfront.net/trip-data", "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/")
 
 
@@ -70,10 +70,12 @@ def get_url(year, month, type_taxi, table_name):
 def force_data_types(chunck, type_taxi):
     
     if type_taxi == TYPE_TAXY[0]:
+
+        chunck['lpep_pickup_datetime'] = pd.to_datetime(chunck['lpep_pickup_datetime']).dt.strftime('%Y-%m-%d %H:%M:%S')
+        chunck['lpep_dropoff_datetime'] = pd.to_datetime(chunck['lpep_dropoff_datetime']).dt.strftime('%Y-%m-%d %H:%M:%S')
+
         return chunck.astype({
             "VendorID": "Int64",
-            "lpep_pickup_datetime": "datetime64[ns]",
-            "lpep_dropoff_datetime": "datetime64[ns]",
             "store_and_fwd_flag": "string",
             "RatecodeID": "Int64",
             "PULocationID": "Int64",
@@ -90,13 +92,16 @@ def force_data_types(chunck, type_taxi):
             "total_amount": "float64",
             "payment_type": "Int64",
             "trip_type": "Int64",
-            "congestion_surcharge": "float64"})
+            "congestion_surcharge": "float64"
+            })
 
     elif type_taxi == TYPE_TAXY[1]:
+
+        chunck['tpep_pickup_datetime'] = pd.to_datetime(chunck['tpep_pickup_datetime']).dt.strftime('%Y-%m-%d %H:%M:%S')
+        chunck['tpep_dropoff_datetime'] = pd.to_datetime(chunck['tpep_dropoff_datetime']).dt.strftime('%Y-%m-%d %H:%M:%S')
+
         return chunck.astype({
            "VendorID": "Int64",
-            "tpep_pickup_datetime": "datetime64[ns]",
-            "tpep_dropoff_datetime": "datetime64[ns]",
             "passenger_count": "Int64",
             "trip_distance": "float64",
             "RatecodeID": "Int64",
@@ -114,13 +119,15 @@ def force_data_types(chunck, type_taxi):
             "congestion_surcharge": "float64"})
     
     elif type_taxi == TYPE_TAXY[2]:
+
+        chunck['pickup_datetime'] = pd.to_datetime(chunck['pickup_datetime']).dt.strftime('%Y-%m-%d %H:%M:%S')
+        chunck['dropOff_datetime'] = pd.to_datetime(chunck['dropOff_datetime']).dt.strftime('%Y-%m-%d %H:%M:%S')
+
         return chunck.astype({
             "dispatching_base_num": "string",
-            "pickup_datetime": "datetime64[ns]",
-            "dropOff_datetime": "datetime64[ns]",
             "PUlocationID": "Int64",
             "DOlocationID": "Int64",
-            "SR_Flag": "float64",
+            "SR_Flag": "Int64",
             "Affiliated_base_number": "string"
         })
     
@@ -146,7 +153,7 @@ def load_dataset_in_bigquery(year, month, type_taxi, table_name):
         buffer.seek(0)
 
         with gzip.GzipFile(fileobj=buffer, mode="rb") as gz_file:
-            for chunk in pd.read_csv(gz_file, chunksize=chunk_size, low_memory=False): 
+            for chunk in pd.read_csv(gz_file, chunksize=chunk_size): 
                 yield force_data_types(chunk, type_taxi)
 
 
@@ -180,7 +187,7 @@ if __name__ == "__main__":
 
     for month in list_month:
         print("=" * 70)
-        print(f"{GREEN}Starting the process for {args.year}-{month}...{RESET}")
+        print(f"{GREEN}Starting the process for {args.type_taxi} -> {args.year}-{month}...{RESET}")
         inicio = time.time()
 
         load_dataset_in_bigquery(args.year, month, args.type_taxi, table_name)
