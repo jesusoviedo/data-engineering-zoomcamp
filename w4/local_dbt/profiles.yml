@@ -1,0 +1,39 @@
+local_nyc_tripdata:
+  outputs:
+    dev:
+      connect_timeout: 10
+      dbname: postgres-zoomcamp-w2
+      host: localhost
+      keepalives_idle: 0
+      password: k3sTR5
+      port: 5432
+      retries: 1
+      schema: public
+      threads: 4
+      type: postgres
+      user: kestr5-user
+  target: dev
+prueba:
+  outputs:
+    dev:
+      dbname: '1'
+      host: '4'
+      pass: '1'
+      port: 5432
+      schema: '1'
+      threads: 0
+      type: postgres
+      user: '1'
+  target: dev
+rj92:
+  outputs:
+    dev:
+      dbname: '0'
+      host: '0'
+      pass: '0'
+      port: 0
+      schema: '0'
+      threads: 0
+      type: postgres
+      user: '0'
+  target: dev
