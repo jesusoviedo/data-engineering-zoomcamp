@@ -29,5 +29,6 @@ hw3/credentials
 hw3/data
 
 # semana 4
+w4/local_dbt/logs
 hw4/credentials
 hw4/logs
