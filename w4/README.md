@@ -1,4 +1,4 @@
-# Workshop
+# Semana 
 
 ## 1. Comandos básicos
 
@@ -54,29 +54,23 @@ pipenv --python 3.12
 ```
 
 ```bash
-pipenv install pandas polars 
+pipenv install pandas polars dbt-core dbt-postgres
 ```
-
 
 ```bash
 pipenv install --dev notebook
 ```
 
-Carpeta de script
+Carpeta para codigo DBT local (si prefiere trabajar localmente)
 
 ```bash
-mkdir script
-```
-
-Carpeta de credenciales
-```bash
-mkdir .dlt
+mkdir local_dbt
 ```
 
 
-## 3. DBT
+## 3. Creación y inicialización del entorno
 
-**Creando entorno en la nube**
+### **DBT + BigQuery + GitHub**
 
 Paso 1: necesitamos una cuenta de servicio con permisos de `BigQuery Data Editor`, `BigQuery Job User` y `BigQuery User` 
 
@@ -92,173 +86,74 @@ Paso 6: Configure el entorno de desarrollo indicando el nombre del dataset
 
 Paso 7: Configure el repositorio de GitHub u otro que quiera utilizar para el proyecto de DBT
 
-## 4. Data Load Tool (DLT)
-
-[![Cargando datos en BigQuery](https://img.youtube.com/vi/pgJWP_xqO1g/maxresdefault.jpg)](https://www.youtube.com/live/pgJWP_xqO1g)
-
-**Primer ETL con DLT**
-
-```bash
-pipenv run python ./script/dlt_1.py
-```
-
-**Extrayendo datos con DLT**
-
-Podemos mejorar la manera de extraer datos con DLT
-
-```python
-import dlt
-from dlt.sources.helpers.rest_client import RESTClient
-from dlt.sources.helpers.rest_client.paginators import PageNumberPaginator
+Paso 8: Inicializa tu proyecto DBT
 
 
-def paginated_getter():
-    client = RESTClient(
-        base_url="https://us-central1-dlthub-analytics.cloudfunctions.net",
-        paginator=PageNumberPaginator(   
-            base_page=1,   
-            total_path=None    
-        )
-    )
+### **DBT(local) + PostgreSQL(local) + GitHub**
 
-    for page in client.paginate("data_engineering_zoomcamp_api"):    
-        yield page   
+Paso 1: Contar con una instancia de PostgreSQL levantada
 
-for page_data in paginated_getter():
-    print(page_data)
-```
-
-
-**DLT normaliza datos automáticamente**
-
-No nos debemos preocupar por la normalización cuando trabajamos con datos no estructurados.
-
-```python
-import dlt
-
-pipeline = dlt.pipeline(
-    pipeline_name="ny_taxi_data",
-    destination="duckdb",
-    dataset_name="taxi_rides",
-)
-
-info = pipeline.run(data, table_name="rides", write_disposition="replace")
-
-print(info)
-
-print(pipeline.last_trace)
-```
-
-**Extracción, Normalización y Carga de datos con DLT**
-
-Uniendo todas las partes para un ELT más completo en DLT
-
-```python
-import dlt
-from dlt.sources.helpers.rest_client import RESTClient
-from dlt.sources.helpers.rest_client.paginators import PageNumberPaginator
-
-
-@dlt.resource(name="rides")  
-def ny_taxi():
-    client = RESTClient(
-        base_url="https://us-central1-dlthub-analytics.cloudfunctions.net",
-        paginator=PageNumberPaginator(
-            base_page=1,
-            total_path=None
-        )
-    )
-
-    for page in client.paginate("data_engineering_zoomcamp_api"):  
-        yield page  
-
-
-pipeline = dlt.pipeline(destination="duckdb")
-
-load_info = pipeline.run(ny_taxi, write_disposition="replace")
-print(load_info)
-
-pipeline.dataset(dataset_type="default").rides.df()
-```
+Paso 2: Instalar DBT localmente, no olvidarse de la dependencia para poder conectarse con PostgreSQL
 
 ```bash
-pipenv run python ./script/dlt_2.py
+pipenv install dbt-core dbt-postgres
 ```
 
-**Ejemplo usando API de Rick and Morty + BigQuery**
+Paso 3: Crear un archivo profiles.yml en la carpeta `local_dbt` para definir el consumo del [PostgreSQL](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup) de manera local
 
-Paso 1: necesitamos una cuenta de servicio con permisos de `BigQuery Data Editor`, `BigQuery Job User` y `BigQuery Read Session User`
-
-Paso 2: descargar el archivo .json
-
-Paso 3: crear archivo secrets:
 
 ```bash
-touch secrets.toml
+local_nyc_tripdata:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: [hostname]
+      user: [username]
+      password: [password]
+      port: [port]
+      dbname: [database name] # or database instead of dbname
+      schema: [dbt schema]
+      threads: [optional, 1 or more]
+      [keepalives_idle](#keepalives_idle): 0 # default 0, indicating the system default. See below
+      connect_timeout: 10 # default 10 seconds
+      [retries](#retries): 1  # default 1 retry on error/timeout when opening connections
+      [search_path](#search_path): [optional, override the default postgres search_path]
+      [role](#role): [optional, set the role dbt assumes when executing queries]
+      [sslmode](#sslmode): [optional, set the sslmode used to connect to the database]
+      [sslcert](#sslcert): [optional, set the sslcert to control the certifcate file location]
+      [sslkey](#sslkey): [optional, set the sslkey to control the location of the private key]
+      [sslrootcert](#sslrootcert): [optional, set the sslrootcert config value to a new file path in order to customize the file location that contain root certificates]
 ```
 
-Paso 4: copiar el `project_id`, `client_id` y `client_secret` del archivo .json
-```bash
-[destination.bigquery]
-location = "US"
-
-[destination.bigquery.credentials]
-project_id ="project_id"  
-client_id = "client_id" 
-client_secret = "client_secret"  
-```
-
-Paso 5: ejecutar el script:
-
-```bash
-pipenv run python script/dlt_3.py
-```
-
-*Observación: no debes guardar el contenido del archivo secrets.toml en GitHub*
-
-**Ejemplo usando API de trip data + Bucket GCP**
-
-Paso 1: necesitamos una cuenta de servicio con permisos de `Storage Admin` y `Storage Object Creator`
-
-Paso 2: descargar el archivo .json
-
-Paso 3: definir variable de entorno que Google Cloud SDK y bibliotecas buscan por defecto 
+Paso 4: estableces la ubicacion de los profiles de DBT
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS="ruta/al/archivo/credenciales.json"
+export DBT_PROFILES_DIR=path_home/data-engineering-zoomcamp/w4/local_dbt
 ```
 
-*Para que la variable persista entre sesiones, agrega la línea anterior a tu archivo de configuración de shell (por ejemplo, .bashrc, .zshrc o .bash_profile)*
 
-Paso 4: crear archivo secrets:
+Paso 5: Inicializar un proyecto DBT en la carpeta local definida anteriormente
 
 ```bash
-touch secrets.toml
+pipenv shell
+cd local_dbt
+dbt init local_nyc_tripdata
 ```
 
-Paso 5: copiar el `project_id`, `client_id` y `client_secret` del archivo .json
-```bash
-[destination.bigquery]
-location = "US"
+Paso 6: Verificar el archivo dbt_proyect.yml para verificar la estructura del proyecto y cambiar el perfil si es necesario. 
 
-[destination.bigquery.credentials]
-project_id ="project_id"  
-client_id = "client_id" 
-client_secret = "client_secret"  
-```
-
-Paso 5: ejecutar el script (se debe pasar el nombre del bucket, tipo de taxy, año, mes inicio y mes fin y como argumenteso):
+Paso 7: Validar la conectividad con PostgreSQL
 
 ```bash
-python script/dlt_4.py \
--bk data_enginnering_rj92_wk_2025 \
--t green \
--y 2024 \
--i 1 \
--f 7
+cd local_nyc_tripdata
+dbt debug
 ```
 
-*Observación: no debes guardar el contenido del archivo secrets.toml en GitHub*
+
+
+## 4. Data Load Tool (DBT)
+
 
 
 ###  Fuentes y Documentación
@@ -267,20 +162,14 @@ Si deseas profundizar más, consulta estos recursos:
 
 - *[Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main)*
 - *[TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)*
-- [DLT - Data ingestion workshop](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/cohorts/2025/workshops/dlt/data_ingestion_workshop.md)
-- *[DuckDB - Python API](https://duckdb.org/docs/clients/python/overview.html)*
-- *[DuckDB - Documentación](https://duckdb.org/docs/index)*
-- *[DuckDB - GitHub](https://github.com/duckdb/duckdb)*
-- *[DLT - GitHub](https://github.com/dlt-hub/dlt)*
-- *[DLT - Getting started](https://dlthub.com/docs/intro)*
-- *[DLT - How dlt works](https://dlthub.com/docs/reference/explainers/how-dlt-works)*
-- *[DLT - Core concepts](https://dlthub.com/docs/dlt-ecosystem/verified-sources/)*
-- *[DLT - Destinations](https://dlthub.com/docs/dlt-ecosystem/destinations/)*
-- *[DLT - Destination duckdb](https://dlthub.com/docs/dlt-ecosystem/destinations/duckdb)*
-- *[DLT - Destination bigquery](https://dlthub.com/docs/dlt-ecosystem/destinations/bigquery)*
-- *[DLT - Destination filesystem](https://dlthub.com/docs/dlt-ecosystem/destinations/filesystem)*
-- *[DLT - Using dlt](https://dlthub.com/docs/general-usage/)*
 
+- *[Que es DBT?](https://docs.getdbt.com/docs/introduction)*
+
+
+
+https://www.getdbt.com/blog/what-is-analytics-engineering
+https://www.datacamp.com/blog/what-is-an-analytics-engineer-everything-you-need-to-know
+https://www.ibm.com/think/topics/data-engineer-data-vs-data-scientist-vs-analytics-engineer
 
 
 
