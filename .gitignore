@@ -7,19 +7,28 @@ terraform.tfstate.backup
 *.tfvars
 *.log
 
-# semana 1
-w1/data
-w1/data
-w1/output
-w1/keys-cloud
-
-hw1/data
-
-hw3/credentials
-hw3/data
-
 *.duckdb
 *.duckdb.wal
 
 secrets.toml
 gcp_credentials.json
+
+dbt.log
+
+.vscode
+
+# semana 1
+w1/data
+w1/data
+w1/output
+w1/keys-cloud
+hw1/data
+
+# semana 3
+hw3/credentials
+hw3/data
+
+# semana 4
+w4/local_dbt/logs
+hw4/credentials
+hw4/logs

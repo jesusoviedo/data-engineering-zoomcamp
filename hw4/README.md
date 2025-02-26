@@ -10,7 +10,11 @@ pipenv --python 3.12
 ```
 
 ```bash
-pipenv install --dev notebook pandas dlt[bigquery] google-cloud-bigquery-storage dask
+pipenv install pandas dlt[bigquery] google-cloud-bigquery-storage 
+```
+
+```bash
+pipenv install --dev notebook 
 ```
 
 Carpeta de notebooks
@@ -72,7 +76,7 @@ private_key = "private_key"
 client_email = "client_email"  
 ```
 
-Paso 5: ejecutar el script (se debe pasar el nombre del bucket, tipo de taxy, año, mes inicio y mes fin y como argumentos):
+Paso 6: ejecutar el script (se debe pasar el nombre del bucket, tipo de taxy, año, mes inicio y mes fin y como argumentos):
 
 Ejemplos:
 
@@ -103,7 +107,51 @@ python script/load_data.py \
 -f 12
 ```
 
-### 3. Iniciar notebook
+### 3 Iniciar DBT local + BigQuery
+
+Paso 1: Necesitamos una cuenta de servicio con permisos de `BigQuery Data Editor`, `BigQuery Job User` y `BigQuery User`
+
+Paso 2: Descarga el archivo con el nombre de `gcp_credentials.json` en la carpeta `credentials`
+
+*Observación: no debes guardar el contenido del archivo `gcp_credentials.json` en GitHub*
+
+Paso 3: Instala DBT localmente, no olvidarse de la dependencia para poder conectarse con PostgreSQL
+
+```bash
+pipenv install dbt-core dbt-bigquery 
+```
+
+Paso 4: Inicializa un proyecto DBT
+
+```bash
+pipenv shell
+dbt init dbt_nyc_hw4
+```
+
+Paso 5: Sigue las instrucciones para crear el `profiles.yml`
+
+*Se realizaran algunas consultas como:*
+- *Which database would you like to use?*
+- *Desired authentication method option*
+- *keyfile (/path/to/bigquery/keyfile.json)*
+- *project (GCP project id)*
+- *dataset (the name of your dbt dataset)*
+- *threads (1 or more)*
+- *job_execution_timeout_seconds*
+- *Desired location option*
+
+
+Paso 6: Abre el archivo `dbt_proyect.yml` para verificar la estructura del proyecto. 
+
+Paso 7: Valida la conectividad con BigQuery
+
+```bash
+cd dbt_nyc_hw4
+dbt debug
+```
+
+
+### 4 Iniciar notebook
 
 Iniciar notebook
 

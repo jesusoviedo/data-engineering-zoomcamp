@@ -5,13 +5,14 @@ name = "pypi"
 
 [packages]
 google-cloud-bigquery-storage = "*"
-dask = "*"
 tqdm = "*"
+dbt-bigquery = "*"
+dbt-core = "*"
+pandas = "*"
+dlt = {extras = ["bigquery"], version = "*"}
 
 [dev-packages]
 notebook = "*"
-pandas = "*"
-dlt = {extras = ["bigquery"], version = "*"}
 
 [requires]
 python_version = "3.12"

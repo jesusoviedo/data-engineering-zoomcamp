@@ -207,21 +207,21 @@ Paso 1: necesitamos una cuenta de servicio con permisos de `BigQuery Data Editor
 
 Paso 2: descargar el archivo .json
 
-Paso 3: crear archivo secrets:
+Paso 3: crear archivo secrets en la carpeta `.dlt`:
 
 ```bash
 touch secrets.toml
 ```
 
-Paso 4: copiar el `project_id`, `client_id` y `client_secret` del archivo .json
+Paso 4: copiar el `project_id`, `private_key` y `client_email` del archivo .json
 ```bash
 [destination.bigquery]
 location = "US"
 
 [destination.bigquery.credentials]
 project_id ="project_id"  
-client_id = "client_id" 
-client_secret = "client_secret"  
+private_key = "private_key" 
+client_email = "client_email"  
 ```
 
 Paso 5: ejecutar el script:
@@ -230,7 +230,7 @@ Paso 5: ejecutar el script:
 pipenv run python script/dlt_3.py
 ```
 
-*Observación: no debes guardar el contenido del archivo secrets.toml en GitHub*
+*Observación: no debes guardar el contenido del archivo `secrets.toml` en GitHub*
 
 **Ejemplo usando API de trip data + Bucket GCP**
 
@@ -238,7 +238,7 @@ Paso 1: necesitamos una cuenta de servicio con permisos de `Storage Admin` y `St
 
 Paso 2: descargar el archivo .json
 
-Paso 3: definir variable de entorno que Google Cloud SDK y bibliotecas buscan por defecto 
+Paso 3: definir variable de entorno que Google Cloud SDK y bibliotecas que buscan por defecto 
 
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS="ruta/al/archivo/credenciales.json"
@@ -246,24 +246,24 @@ export GOOGLE_APPLICATION_CREDENTIALS="ruta/al/archivo/credenciales.json"
 
 *Para que la variable persista entre sesiones, agrega la línea anterior a tu archivo de configuración de shell (por ejemplo, .bashrc, .zshrc o .bash_profile)*
 
-Paso 4: crear archivo secrets:
+Paso 4: crear archivo secrets en la carpeta `.dlt`:
 
 ```bash
 touch secrets.toml
 ```
 
-Paso 5: copiar el `project_id`, `client_id` y `client_secret` del archivo .json
+Paso 5: copiar el `project_id`, `private_key` y `client_email` del archivo .json
 ```bash
 [destination.bigquery]
 location = "US"
 
 [destination.bigquery.credentials]
 project_id ="project_id"  
-client_id = "client_id" 
-client_secret = "client_secret"  
+private_key = "private_key" 
+client_email = "client_email"  
 ```
 
-Paso 5: ejecutar el script (se debe pasar el nombre del bucket, tipo de taxy, año, mes inicio y mes fin y como argumenteso):
+Paso 5: ejecutar el script (se debe pasar el nombre del bucket, tipo de taxy, año, mes inicio y mes fin y como argumentos):
 
 ```bash
 python script/dlt_4.py \
