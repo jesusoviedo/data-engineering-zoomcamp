@@ -182,11 +182,10 @@ Si deseas profundizar más, consulta estos recursos:
 
 [Quick start](https://spark.apache.org/docs/latest/quick-start.html)
 [Examples](https://github.com/apache/spark/tree/master/examples/src/main/python)
-
-[text](https://spark.apache.org/docs/latest/api/python/index.html)
-[text](https://spark.apache.org/docs/latest/api/python/getting_started/index.html)
-[text](https://spark.apache.org/docs/latest/api/python/user_guide/index.html)
-[text](https://spark.apache.org/docs/latest/api/python/reference/index.html)
+[PySpark - overview](https://spark.apache.org/docs/latest/api/python/index.html)
+[PySpark - getting started](https://spark.apache.org/docs/latest/api/python/getting_started/index.html)
+[PySpark - user guide](https://spark.apache.org/docs/latest/api/python/user_guide/index.html)
+[PySpark - reference](https://spark.apache.org/docs/latest/api/python/reference/index.html)
 
 
 https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.repartition.html
