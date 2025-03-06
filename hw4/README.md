@@ -166,3 +166,9 @@ jupyter notebook &
 
 ### 3. Desarrollo de la tarea
 Descarga el archivo **[Homework4.ipynb](./notebooks/Homework4.ipynb)** en la carpeta de notebooks para revisar los detalles de la solución de la tarea
+
+*Comando para detener todos los servicios de notebook:*
+
+```bash
+pkill -f jupyter
+```
