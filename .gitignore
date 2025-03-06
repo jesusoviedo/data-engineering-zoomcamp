@@ -32,3 +32,7 @@ hw3/data
 w4/local_dbt/logs
 hw4/credentials
 hw4/logs
+
+# semana 5
+w5/tmp
+hw5/data
