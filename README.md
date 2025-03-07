@@ -136,9 +136,9 @@ Potencia tu aprendizaje explorando mis artículos en Medium.
 
 - 📌[DBT: explorando conceptos intermedios para una mayor comprensión](https://medium.com/@j92riquelme/dbt-explorando-conceptos-intermedios-para-una-mayor-comprensi%C3%B3n-d922490a80c7)
 
-- 📌 [DBT: dominando los conceptos avanzados](https://medium.com/@j92riquelme/dbt-dominando-los-conceptos-avanzados-2807653af623)
+- 📌[DBT: dominando los conceptos avanzados](https://medium.com/@j92riquelme/dbt-dominando-los-conceptos-avanzados-2807653af623)
 
-- 📌 [Ingesta Inteligente de Datos: combinando DLT, BigQuery y Filesystem para grandes volúmenes](https://medium.com/@j92riquelme/ingesta-inteligente-de-datos-combinando-dlt-bigquery-y-filesystem-para-grandes-vol%C3%BAmenes-33cca341f4b4)
+- 📌[Ingesta Inteligente de Datos: combinando DLT, BigQuery y Filesystem para grandes volúmenes](https://medium.com/@j92riquelme/ingesta-inteligente-de-datos-combinando-dlt-bigquery-y-filesystem-para-grandes-vol%C3%BAmenes-33cca341f4b4)
 
 ¡Haz clic en los enlaces para leer más y unirte a la discusión!
 
@@ -146,7 +146,13 @@ Potencia tu aprendizaje explorando mis artículos en Medium.
 
 ---
 
+## Herramienta para limpiar entornos virtuales
 
+¿Necesitas mantener tus entornos pipenv organizados y eliminar aquellos de semanas pasadas? Hemos desarrollado un script en Bash que recorre los directorios de cada módulo (los que empiezan con `w` o `hw`) y elimina automáticamente los entornos virtuales, exceptuando los que especifiques.
+
+Descubre cómo funciona y cómo usarlo en el [README del script](./script/README.md).
+
+---
 
 
 ✅ **Más contenido próximamente...** ¡Sigue explorando y aprendiendo! 🚀  
