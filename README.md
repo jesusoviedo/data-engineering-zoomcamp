@@ -113,11 +113,46 @@ Potencia tu aprendizaje explorando mis artículos en LinkedIn ó Medium.
 
 ¡Haz clic en los enlaces para leer más y unirte a la discusión!
 
+---
+
+🔹 **Módulo 4: Analytics Engineering**  
+
+📦 *[Analytics Engineering](/w4/)* – Descubre cómo utilizar DBT para modelar, transformar y documentar datos de manera eficiente con SQL. Además, exploramos DBT Cloud para ejecutar y programar tareas, gestionar versiones y facilitar la colaboración en proyectos de datos.
+
+
+📝 *[Tarea: Analytics Engineering](/hw4/)* – Resuelve desafíos prácticos y lleva tus habilidades al siguiente nivel.  
+
+#### 🔗 **Explora más en Medium**
+
+Potencia tu aprendizaje explorando mis artículos en Medium. 
+
+- 📌[Analytics Engineer: el puente entre Data Engineering y Data Analyst](https://medium.com/@j92riquelme/analytics-engineer-el-puente-entre-data-engineering-y-data-analyst-631a4771b173)
+
+- 📌[Modelado de Datos: desde ETL hasta Esquemas en estrella y el Modelo Dimensional de Kimball](https://medium.com/@j92riquelme/modelado-de-datos-desde-etl-hasta-esquemas-en-estrella-y-el-modelo-dimensional-de-kimball-507ec29833a4)
+
+- 📌[DBT para principiantes: una guía introductoria](https://medium.com/@j92riquelme/dbt-para-principiantes-una-gu%C3%ADa-introductoria-3f5735d15771)
+
+- 📌[DBT: conceptos básicos que debes conocer](https://medium.com/@j92riquelme/dbt-conceptos-b%C3%A1sicos-que-debes-conocer-766337268b81)
+
+- 📌[DBT: explorando conceptos intermedios para una mayor comprensión](https://medium.com/@j92riquelme/dbt-explorando-conceptos-intermedios-para-una-mayor-comprensi%C3%B3n-d922490a80c7)
+
+- 📌[DBT: dominando los conceptos avanzados](https://medium.com/@j92riquelme/dbt-dominando-los-conceptos-avanzados-2807653af623)
+
+- 📌[Ingesta Inteligente de Datos: combinando DLT, BigQuery y Filesystem para grandes volúmenes](https://medium.com/@j92riquelme/ingesta-inteligente-de-datos-combinando-dlt-bigquery-y-filesystem-para-grandes-vol%C3%BAmenes-33cca341f4b4)
+
+¡Haz clic en los enlaces para leer más y unirte a la discusión!
+
 
 
 ---
 
+## Herramienta para limpiar entornos virtuales
 
+¿Necesitas mantener tus entornos pipenv organizados y eliminar aquellos de semanas pasadas? Hemos desarrollado un script en Bash que recorre los directorios de cada módulo (los que empiezan con `w` o `hw`) y elimina automáticamente los entornos virtuales, exceptuando los que especifiques.
+
+Descubre cómo funciona y cómo usarlo en el [README del script](./script/README.md).
+
+---
 
 
 ✅ **Más contenido próximamente...** ¡Sigue explorando y aprendiendo! 🚀  
