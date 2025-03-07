@@ -150,7 +150,7 @@ Potencia tu aprendizaje explorando mis artículos en Medium.
 
 ¿Necesitas mantener tus entornos pipenv organizados y eliminar aquellos de semanas pasadas? Hemos desarrollado un script en Bash que recorre los directorios de cada módulo (los que empiezan con `w` o `hw`) y elimina automáticamente los entornos virtuales, exceptuando los que especifiques.
 
-Descubre cómo funciona y cómo usarlo en el [README del script](./script/README.md).
+Descubre cómo funciona y cómo usarlo en el [README del script](./script/).
 
 ---
 
