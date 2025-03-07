@@ -32,7 +32,7 @@ Este script en Bash elimina los entornos virtuales creados con **pipenv** en dir
     
     Esto procesará todos los directorios que comiencen con `w` o `hw` (ubicados en el directorio padre), eliminando el entorno virtual de pipenv en cada uno, excepto en los directorios `w1` y `hw1`.
 
-## Cómo Funciona
+## Cómo funciona
 
 - **Verificación de argumentos:** si no se pasan argumentos, el script muestra un mensaje de uso y se detiene.
 
@@ -47,7 +47,7 @@ Este script en Bash elimina los entornos virtuales creados con **pipenv** en dir
 
 - **Regreso al directorio raíz:** después de procesar cada directorio, vuelve al directorio raíz para continuar con el siguiente.
 
-## Notas Adicionales
+## Notas adicionales
 - **Precaución:** asegúrate de que el script se ejecute desde la ubicación correcta, ya que utiliza `cd ..` para llegar a la carpeta que contiene los directorios `w*` y `hw*`.
 
 - **Personalización:** puedes modificar el patrón de búsqueda o agregar funcionalidades adicionales según tus necesidades.
