@@ -178,6 +178,7 @@ from pyspark.sql import types
 from pyspark.sql import functions as F
 ```
 
+
 Crear una sesión de Spark en Python, usando [SparkSession](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/spark_session.html), que es la entrada principal para trabajar con DataFrames en PySpark.
 
 ```python
@@ -187,6 +188,7 @@ spark = SparkSession.builder \
     .getOrCreate()
 ```
 
+
 Leer un archivo [CSV](https://spark.apache.org/docs/latest/sql-data-sources-csv.html) y crear un DataFrame de Spark.
 
 ```python
@@ -195,11 +197,13 @@ df = spark.read \
     .csv('../tmp/taxi_zone_lookup.csv')
 ```
 
+
 [Mostrar](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.show.html) en pantalla las primeras 20 filas del DataFrame de PySpark, en formato de tabla
 
 ```python
 df.show()
 ```
+
 
 [Guardar](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameWriter.parquet.html) el DataFrame en formato Parquet dentro de una carpeta
 
@@ -207,11 +211,13 @@ df.show()
 df.write.parquet('../tmp/parquet/zones', mode="overwrite")
 ```
 
+
 Devolver el [esquema](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.schema.html) del DataFrame como un objeto StructType de PySpark
 
 ```python
 df.schema
 ```
+
 
 Imprimir el [esquema](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.printSchema.html) del DataFrame de forma legible en la consola
 
@@ -219,11 +225,13 @@ Imprimir el [esquema](https://spark.apache.org/docs/latest/api/python/reference/
 df.printSchema()
 ```
 
+
 Convertir un DataFrame de pandas en un [DataFrame](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.createDataFrame.html) de PySpark.
 
 ```python
 spark.createDataFrame(df_pandas)
 ```
+
 
 Definir de forma explícita la estructura ([schema](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/data_types.html)) de un DataFrame de PySpark.
 
@@ -239,17 +247,20 @@ schema = types.StructType([
 ])
 ```
 
+
 Repartir ([divide](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.repartition.html)) el DataFrame df en N particiones.
 
 ```python
 df = df.repartition(24)
 ```
 
+
 Convertir una función normal de Python en una [UDF](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.udf.html) (User Defined Function) para usar dentro de un DataFrame de Spark.
 
 ```python
 crazy_stuff_udf = F.udf(crazy_stuff, returnType=types.StringType())
 ```
+
 
 [Crear](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.withColumn.html) N nuevas columnas en un DataFrame de Spark aplicando funciones predefinidas y UDF a ciertas columnas. Por ultimo, [seleccionar](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.select.html) ciertas columnas.
 
@@ -262,12 +273,113 @@ df \
     .show()
 ```
 
+
 Aplicar [filtros](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.filter.html) a un DataFrame de Spark.
 
 ```python
 df.select('pickup_datetime', 'dropoff_datetime', 'PULocationID', 'DOLocationID') \
   .filter(df.hvfhs_license_num == 'HV0003') \
   .show()
+```
+
+
+[Renombra](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.withColumnRenamed.html) una columna de un DataFrame de Spark.
+
+```python
+df_green = df_green \
+    .withColumnRenamed('lpep_pickup_datetime', 'pickup_datetime') \
+    .withColumnRenamed('lpep_dropoff_datetime', 'dropoff_datetime')
+```
+
+
+[Une](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.union.html) dos DataFrames con las mismas columnas
+
+```python
+df_trips_data = df_green_sel.union(df_yellow_sel)
+```
+
+
+[Agrupa](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.groupBy.html) los datos según una o más columna de un DataFrame de Spark
+
+```python
+df_trips_data.groupBy('service_type').count().show()
+```
+
+
+[Crea](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.createOrReplaceTempView.html) una vista temporal en Spark SQL a partir de un DataFrame de Spark
+
+```python
+df_trips_data.createOrReplaceTempView ('trips_data')
+```
+
+Ejecuta una sentencia SQL sobre la vista temporal creada
+
+```python
+spark.sql("""
+SELECT
+    service_type,
+    count(1)
+FROM
+    trips_data
+GROUP BY 
+    service_type
+""").show()
+```
+
+
+[Reduce](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.coalesce.html) el número de particiones del DataFrame
+
+```python
+df_result.coalesce(1).write.parquet('../tmp/data/report/revenue/', mode='overwrite')
+```
+
+
+[Une](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.join.html) dos DataFrame de Spark
+
+```python
+df_join = df_green_revenue_tmp.join(df_yellow_revenue_tmp, on=['hour', 'zone'], how='outer')
+```
+
+[Convierte](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.rdd.html) un DataFrama en un RDD
+
+```python
+rdd = df_green \
+    .select('lpep_pickup_datetime', 'PULocationID', 'total_amount') \
+    .rdd
+```
+
+
+[Filtra](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.RDD.filter.html) las filas del RDD, [transforma](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.RDD.map.html) cada fila en una tupla clave-valor y [agrupa por la clave](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.RDD.reduceByKey.html) generada y sumar los valores o realiza otro tipo de agregación.
+
+```python
+df_result = rdd \
+    .filter(filter_outliers) \
+    .map(prepare_for_grouping) \
+    .reduceByKey(calculate_revenue) \
+    .take(5)
+```
+
+
+[Convertir](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.toDF.html) a un DataFrama de Spark.
+
+```python
+df_result = rdd \
+    .filter(filter_outliers) \
+    .map(prepare_for_grouping) \
+    .reduceByKey(calculate_revenue) \
+    .map(unwrap) \
+    .toDF(result_schema)
+```
+
+
+
+[Operación por particiones](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.RDD.mapPartitions.html) completas (no por filas), lo que maximiza la eficiencia cuando quieres aplicar un modelo pesado o de Machine Learning, ya que puedes procesar varias filas en lote
+
+```python
+df_predicts = duration_rdd \
+    .mapPartitions(apply_model_in_batch)\
+    .toDF() \
+    .drop('Index')
 ```
 
 ## 4. Descarga de archivos usando script bash
