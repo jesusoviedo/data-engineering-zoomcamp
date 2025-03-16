@@ -168,7 +168,7 @@ export PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
 export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH"
 ```
 
-## 3. Usando PySpark
+## 4. Usando PySpark
 
 Import necesarios
 ```python
@@ -382,7 +382,7 @@ df_predicts = duration_rdd \
     .drop('Index')
 ```
 
-## 4. Descarga de archivos usando script bash
+## 5. Descarga de archivos usando script bash
 
 Carpeta de scripts
 ```bash
@@ -426,7 +426,7 @@ chmod +x download_data.sh
 ./download_data.sh yellow 2021
 ```
 
-## 5. Fuentes y Documentación
+## 6. Fuentes y Documentación
 
 Si deseas profundizar más, consulta estos recursos:
 
